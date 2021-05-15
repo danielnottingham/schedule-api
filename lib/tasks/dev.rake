@@ -43,5 +43,17 @@ namespace :dev do
 
     puts 'Success when registering phones!!!'
 
+    puts 'Creating address...'
+
+    Contact.all.each do |contact|
+      Address.create!(
+        street: Faker::Address.street_address,
+        city: Faker::Address.city,
+        contact_id: Contact.all.sample.id
+      )
+    end
+
+    puts 'Success when registering address!!!'
+
   end
 end
